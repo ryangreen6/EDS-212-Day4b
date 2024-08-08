@@ -1,0 +1,55 @@
+---
+title: "EDS 212 Day4b"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r}
+
+# load libraries
+
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+
+# check out the column names from the data set palmerpenguins
+names(penguins)
+
+# look at the dimensions of the data frame
+dim(penguins)
+
+# get a summary of the data set using the summary function
+summary(penguins)
+
+# get a summary using {skimr} package
+skimr::skim(penguins)
+
+# head and tail
+head(penguins)
+tail(penguins)
+
+# pairsplot 
+GGally::ggpairs(penguins)
+
+# yikes! that was a lot. Now we can narrow it down to get a graph that we want
+GGally::ggpairs(penguins, columns=3:6, ggplot2::aes(color=species))
+
+# that was better. You can play around with what info you plug into GGally
+
+# now create a histogram of penguin flipper lengths
+
+ggplot(data=penguins, aes(x=flipper_length_mm, fill=species)) + geom_histogram()
+
+
+
+
+
+
+
+```
+
